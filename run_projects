@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Siplify projects launch:
+# - connect to VPN;
+# - check updates;
+# - open projects.
+
+
+d_pull_1=""
+d_pull_2=""
+d_pull_3=""
+
+
+# Connect to OpenVPN
+echo "Connecting to OpenVPN"
+sudo /path/to/openvpn --config /path/to/configfile --daemon
+echo "Connected to OpenVPN"
+
+# Check weekly update
+if [ "$(date +%u)" -eq 1 ]
+then
+  echo "Weekly updates"
+  aws ecr --profile chuck_norris...
+
+  d_pull_1="some pull ;"
+  d_pull_2="some pull ;"
+  d_pull_3="some build;"
+else
+  echo "No updates required"
+fi
+
+sleep 1
+
+# Open terminal tabs with projects
+commands1="cd path/to/project1; $d_pull_1 some docker-compose"
+commands2="cd path/to/project2; $d_pull_2 some docker-compose"
+commands3="cd path/to/project3; $d_pull_3 some docker-compose"
+
+cd || exit
+gnome-terminal --tab --title="prj_name1" --command="bash -c '$commands1; $SHELL'" \
+               --tab --title="prj_name2" --command="bash -c '$commands2; $SHELL'" \
+               --tab --title="prj_name3" --command="bash -c '$commands3; $SHELL'"
+
